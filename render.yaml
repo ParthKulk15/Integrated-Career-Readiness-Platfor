@@ -1,0 +1,28 @@
+services:
+  # Backend Spring Boot Service (Docker)
+  - type: web
+    name: career-platform-backend
+    runtime: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    envVars:
+      - key: PORT
+        value: 8080
+      # You MUST define these from the Render Dashboard after deployment
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_USER
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
+
+  # Frontend React Service (Static Site)
+  - type: web
+    name: career-platform-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      # Automatically generated backend URL will be injected here during build if defined
+      - key: VITE_API_URL
+        value: "https://career-platform-backend.onrender.com"
