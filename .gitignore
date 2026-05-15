@@ -25,8 +25,14 @@ dist-ssr
 
 # Backend (Java/Maven)
 backend/target/
-backend/.mvn/
-backend/mvnw
-backend/mvnw.cmd
 *.class
 *.jar
+
+# Environment Variables
+.env
+.env.*
+*.env.txt
+
+# Misc
+*.zip
+.vite/
