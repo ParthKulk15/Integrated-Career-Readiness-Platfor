@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-outline: #737781;
+  --color-background: #f8f9fa;
+  --color-on-surface-variant: #434750;
+  --color-on-tertiary-container: #e1885e;
+  --color-secondary-container: #79f6f5;
+  --color-surface-dim: #d9dadb;
+  --color-on-tertiary-fixed-variant: #753310;
+  --color-inverse-on-surface: #f0f1f2;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-fixed: #351000;
+  --color-primary-container: #00346f;
+  --color-on-primary-container: #7b9ee0;
+  --color-tertiary: #3d1300;
+  --color-surface-container-highest: #e1e3e4;
+  --color-primary-fixed: #d7e2ff;
+  --color-on-surface: #191c1d;
+  --color-tertiary-container: #5f2301;
+  --color-tertiary-fixed: #ffdbcc;
+  --color-surface-container: #edeeef;
+  --color-on-error: #ffffff;
+  --color-surface-container-low: #f3f4f5;
+  --color-secondary-fixed-dim: #59d9d9;
+  --color-surface: #f8f9fa;
+  --color-surface-tint: #395e9b;
+  --color-secondary-fixed: #79f6f5;
+  --color-on-secondary-fixed-variant: #004f4f;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-primary-fixed-variant: #1d4681;
+  --color-surface-bright: #f8f9fa;
+  --color-on-background: #191c1d;
+  --color-primary-fixed-dim: #abc7ff;
+  --color-surface-variant: #e1e3e4;
+  --color-on-secondary-fixed: #002020;
+  --color-secondary: #006a6a;
+  --color-on-secondary: #ffffff;
+  --color-inverse-primary: #abc7ff;
+  --color-primary: #001f48;
+  --color-inverse-surface: #2e3132;
+  --color-on-error-container: #93000a;
+  --color-error: #ba1a1a;
+  --color-on-secondary-container: #007070;
+  --color-on-primary-fixed: #001b3f;
+  --color-error-container: #ffdad6;
+  --color-surface-container-high: #e7e8e9;
+  --color-on-primary: #ffffff;
+  --color-tertiary-fixed-dim: #ffb694;
+  --color-outline-variant: #c3c6d1;
+
+  /* Dark palette — TakeUForward-inspired warm neutral greys */
+  --color-dark-bg: #1a1a1a;
+  --color-dark-surface: #242424;
+  --color-dark-surface-container: #1a1a1a;
+  --color-dark-surface-container-low: #1e1e1e;
+  --color-dark-surface-container-lowest: #121212;
+  --color-dark-surface-container-high: #2c2c2c;
+  --color-dark-surface-container-highest: #363636;
+  --color-dark-surface-variant: #2c2c2c;
+  --color-dark-on-surface: #e8e6e3;
+  --color-dark-on-surface-variant: #a09d98;
+  --color-dark-outline: #48453f;
+  --color-dark-outline-variant: #333230;
+  --color-dark-border: #333230;
+
+  --font-family-headline: 'Manrope', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-label: 'Inter', sans-serif;
+
+  --radius: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-family-body);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2, h3, h4, .headline {
+    font-family: var(--font-family-headline);
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  input, textarea, select, button {
+    font-family: inherit;
+  }
+
+  /* Dark mode global overrides using .dark on <html> */
+  .dark body,
+  .dark {
+    --color-background: var(--color-dark-bg);
+    --color-surface: var(--color-dark-surface);
+    --color-surface-container: var(--color-dark-surface-container);
+    --color-surface-container-low: var(--color-dark-surface-container-low);
+    --color-surface-container-lowest: var(--color-dark-surface-container-lowest);
+    --color-surface-container-high: var(--color-dark-surface-container-high);
+    --color-surface-container-highest: var(--color-dark-surface-container-highest);
+    --color-surface-variant: var(--color-dark-surface-variant);
+    --color-surface-dim: var(--color-dark-bg);
+    --color-surface-bright: var(--color-dark-surface-container-high);
+    --color-on-surface: var(--color-dark-on-surface);
+    --color-on-surface-variant: var(--color-dark-on-surface-variant);
+    --color-on-background: var(--color-dark-on-surface);
+    --color-outline: var(--color-dark-outline);
+    --color-outline-variant: var(--color-dark-outline-variant);
+
+    /* Primary – light blue visible on dark bg */
+    --color-primary: #93bbfc;
+    --color-on-primary: #0a1628;
+    --color-primary-container: #1e3a6e;
+    --color-on-primary-container: #d0e1ff;
+    --color-primary-fixed: #d7e2ff;
+    --color-primary-fixed-dim: #93bbfc;
+    --color-on-primary-fixed: #0a1628;
+    --color-on-primary-fixed-variant: #2d5090;
+
+    /* Secondary – light teal visible on dark bg */
+    --color-secondary: #5ee6e6;
+    --color-on-secondary: #003737;
+    --color-secondary-container: #1a4e4e;
+    --color-on-secondary-container: #99f6f6;
+    --color-secondary-fixed: #79f6f5;
+    --color-secondary-fixed-dim: #5ee6e6;
+
+    /* Tertiary */
+    --color-tertiary: #ffb694;
+    --color-on-tertiary-container: #ffcfb8;
+
+    /* Error */
+    --color-error: #ffb4ab;
+    --color-error-container: #93000a;
+    --color-on-error-container: #ffdad6;
+
+    /* Inverse */
+    --color-inverse-surface: #e8e6e3;
+    --color-inverse-on-surface: #1a1a1a;
+    --color-inverse-primary: #001f48;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+/* Consistent page header styling */
+.page-header {
+  margin-bottom: 2rem;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+/* Fix scrollbar appearance */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* Prevent grid overflow */
+.grid {
+  min-width: 0;
+}
+.grid > * {
+  min-width: 0;
+}
